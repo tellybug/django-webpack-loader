@@ -47,7 +47,7 @@ class WebpackLoader(object):
 
     def get_chunk_url(self, chunk):
         public_path = chunk.get('publicPath')
-        if public_path:
+        if not self.config['RESOLVE_PUBLIC_PATH'] and public_path:
             return public_path
 
         relpath = '{0}{1}'.format(
